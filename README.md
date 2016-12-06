@@ -1,5 +1,10 @@
-# CRUD-Acrualizacion
-Actualizado agregando campo de numero de alumnos.
+# CRUD-ACTUALIZACION
+1. Agrega el campo Numero de Alumnos, según lo requerido en clases.
+2. Agrega ejemplo de una vista sencilla (sin data tables):
+http://localhost:8888/CRUD-CodeIgniter/CodeIgniter/asignaturas/vistaSimple
+
+Nota:
+Deben consigurar su url base en application/config/config.php y su base de datos en application/config/database.php
 
 # CRUD-CodeIgniter-Node
 Repositorio para mostrar CRUD (Create, Read, Update, Delete) desde CodeIgniter (PHP) y Node.JS
