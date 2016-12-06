@@ -8,7 +8,7 @@
 */
 $(document).ready(function() {
   var tabla = $('#asignaturas').DataTable({
-    ajax: 'asignaturas/json',
+    ajax: 'asignaturas/listarAsignaturas',
     responsive: true,
     dom: 'Bfrtip',
     buttons: [
@@ -34,6 +34,14 @@ $(document).ready(function() {
                 '</span>' +
                 '<input type="text" id="agregar_nombre" class="form-control" placeholder="Nombre de asignatura" required>' +
               '</div>' +
+            '</div>' + 
+            '<div class="form-group">' +
+              '<div class="input-group">' +
+                '<span class="input-group-addon">' +
+                  '<i class="glyphicon glyphicon-barcode"></i>' +
+                '</span>' +
+                '<input type="text" id="agregar_cantidadAlumnos" class="form-control" placeholder="Cantidad de alumnos" required>' +
+              '</div>' +
             '</div>',
             buttons: {
               cancel: {
@@ -50,7 +58,8 @@ $(document).ready(function() {
                   e.preventDefault();
                   tabla.row.add({
                     "codigo": $('#agregar_codigo').val(),
-                    "nombre": $('#agregar_nombre').val()
+                    "nombre": $('#agregar_nombre').val(),
+                    "cantidadAlumnos": $('#agregar_cantidadAlumnos').val()
                   }).draw();
 
                   $.ajax({
@@ -58,7 +67,8 @@ $(document).ready(function() {
                     method: 'post',
                     data: {
                       codigo: $('#agregar_codigo').val(),
-                      nombre: $('#agregar_nombre').val()
+                      nombre: $('#agregar_nombre').val(),
+                      cantidadAumnos: $('#agregar_cantidadAlumnos').val()
                     }
                   })
                   .fail(function(err) {
@@ -79,6 +89,7 @@ $(document).ready(function() {
     columns: [
       {data: 'codigo', title: 'Código'},
       {data: 'nombre', title: 'Nombre'},
+      {data: 'numeroAlumnos', title: 'Cantidad Alumnos'},
       {
         render: function(data, type, row, meta) {
           var publicado = row.publicado;
@@ -110,7 +121,8 @@ $(document).ready(function() {
     var fila = $(this).closest('tr'),
     asignatura = tabla.row(fila).data(),
     id = asignatura.codigo,
-    nombre = asignatura.nombre
+    nombre = asignatura.nombre,
+    cantidadAlumnos = asignatura.cantidadAlumnos
     ;
 
     console.log('Editar asignatura con id ' + id);
@@ -123,6 +135,14 @@ $(document).ready(function() {
             '<i class="glyphicon glyphicon-tag"></i>' +
           '</span>' +
           '<input type="text" id="editar_nombre" class="form-control" value="' + nombre + '" placeholder="Nombre de asignatura">' +
+        '</div>' +
+      '</div>' + 
+      '<div class="form-group">' +
+        '<div class="input-group">' +
+          '<span class="input-group-addon">' +
+            '<i class="glyphicon glyphicon-tag"></i>' +
+          '</span>' +
+          '<input type="text" id="editar_cantidadAlumnos" class="form-control" value="' + cantidadAlumnos + '" placeholder="Cantidad de ALumnos">' +
         '</div>' +
       '</div>',
       buttons: {
@@ -139,7 +159,7 @@ $(document).ready(function() {
           callback: function(e) {
             e.preventDefault();
             $.ajax({
-              url: 'asignaturas/json',
+              url: 'asignaturas/listarAsignaturas',
               method: 'get',
               cache: false
             })
@@ -155,7 +175,8 @@ $(document).ready(function() {
               method: 'post',
               data: {
                 codigo: id,
-                nombre: $('#editar_nombre').val()
+                nombre: $('#editar_nombre').val(),
+                cantidadAlumnos: $('#editar_cantidadAlumnos').val()
               }
             })
             .fail(function(err) {

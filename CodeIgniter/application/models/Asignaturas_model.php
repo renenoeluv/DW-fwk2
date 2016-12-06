@@ -7,10 +7,11 @@ class Asignaturas_model extends CI_Model {
     parent::__construct();
   }
 
-  public function set_asignatura($cod, $nom) {
+  public function set_asignatura($cod, $nom, $nalumnos) {
     $data = array(
       'codigo' => $cod,
-      'nombre' => $nom
+      'nombre' => $nom,
+      'numeroAlumnos' => $nalumnos,
     );
 
     $this->db->insert('asignaturas', $data);
@@ -24,8 +25,9 @@ class Asignaturas_model extends CI_Model {
     $this->db->delete('asignaturas', $data);
   }
 
-  public function update_asignatura($cod, $nom) {
+  public function update_asignatura($cod, $nom, $nalumnos) {
     $this->db->set('nombre', $nom);
+    $this->db->set('numeroAlumnos', $nalumnos);
     $this->db->where('codigo', $cod);
     $this->db->update('asignaturas');
   }

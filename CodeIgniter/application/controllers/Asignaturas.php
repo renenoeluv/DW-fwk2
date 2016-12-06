@@ -28,10 +28,11 @@ class Asignaturas extends CI_Controller {
 		$this->load->template('welcome_message');
 	}
 
-	public function json() {
+	public function listarAsignaturas() {
     $this->output
       ->set_content_type('application/json')
       ->set_output(json_encode(array('data' => ($this->Asignaturas_model->get_asignaturas() != false > 0 ? $this->Asignaturas_model->get_asignaturas()->result() : ''))));
+			  
 	}
 
 	public function eliminar() {
@@ -46,8 +47,9 @@ class Asignaturas extends CI_Controller {
 	public function agregar() {
 		$cod = $this->input->post('codigo');
 		$nom = $this->input->post('nombre');
+		$nalu = $this->input->post('cantidadAumnos');
 
-		$this->Asignaturas_model->set_asignatura($cod, $nom);
+		$this->Asignaturas_model->set_asignatura($cod, $nom, $nalu);
     $this->output
       ->set_content_type('application/json')
       ->set_output(json_encode(array('mensaje' => 'La asignatura se ha agregado satisfactoriamente.')));
@@ -56,8 +58,9 @@ class Asignaturas extends CI_Controller {
 	public function editar() {
 		$cod = $this->input->post('codigo');
 		$nom = $this->input->post('nombre');
+		$nalu = $this->input->post('cantidadAlumnos');
 
-		$this->Asignaturas_model->update_asignatura($cod, $nom);
+		$this->Asignaturas_model->update_asignatura($cod, $nom, $nalu);
 		// La asignatura se ha editado satisfactoriamente.
     $this->output
       ->set_content_type('application/json')

@@ -1,3 +1,6 @@
+# CRUD-Acrualizacion
+Actualizado agregando campo de numero de alumnos.
+
 # CRUD-CodeIgniter-Node
 Repositorio para mostrar CRUD (Create, Read, Update, Delete) desde CodeIgniter (PHP) y Node.JS
 
@@ -28,3 +31,4 @@ Repositorio para mostrar CRUD (Create, Read, Update, Delete) desde CodeIgniter (
 3. Instalar dependencias: `bower install && npm install`
 4. Ingresar mediante el navegador al siguiente enlace:
 [Clic aquí](http://127.0.0.1:3000/)
+

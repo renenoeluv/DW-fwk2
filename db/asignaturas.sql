@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `asignaturas` (
   `codigo` varchar(7) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `numeroAlumnos` int NOT NULL,
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -36,11 +37,11 @@ CREATE TABLE IF NOT EXISTS `asignaturas` (
 -- Volcado de datos para la tabla `asignaturas`
 --
 
-INSERT INTO `asignaturas` (`codigo`, `nombre`) VALUES
-('INC100', 'Cálculo I'),
-('INC101', 'Álgebra I v2'),
-('INC102', 'Desarrollo Personal I'),
-('INC103', 'Test');
+INSERT INTO `asignaturas` (`codigo`, `nombre`, `numeroAlumnos`) VALUES
+('INC100', 'Cálculo I', 10),
+('INC101', 'Álgebra I v2', 20),
+('INC102', 'Desarrollo Personal I', 30),
+('INC103', 'Test', 40);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
