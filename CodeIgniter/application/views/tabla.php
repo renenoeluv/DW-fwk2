@@ -18,8 +18,7 @@
 					<td> <?php echo $a->nombre; ?> </td>
 					<td> <?php echo $a->numeroAlumnos; ?> </td>
 					<td>
-						 <a href='<?php echo base_url('asignaturas/editar'). $m->id; ?>'>Editar</a>
-						 <a href='<?php echo base_url('asignaturas/eliminar'). $m->id; ?>'>Eliminar</a>
+						 <a href='<?php echo base_url('asignaturas/eliminar')."?". $a->codigo; ?>'>Eliminar</a>
 				    </td>
 				</tr>
 			<?php } ?>
