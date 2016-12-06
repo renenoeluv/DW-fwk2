@@ -24,15 +24,20 @@ class Asignaturas extends CI_Controller {
 		$this->load->model('Asignaturas_model');
 	}
 
-	public function index() {
+	/*public function index() {
 		$this->load->template('welcome_message');
 	}
+*/
+	public function index() {
+    $asignaturas = $this->Asignaturas_model->get_asignaturas()->result();
+    $data['asignaturas'] = $asignaturas;
+    $this->load->view('tabla', $data);
 
-	public function listarAsignaturas() {
+/*
     $this->output
       ->set_content_type('application/json')
       ->set_output(json_encode(array('data' => ($this->Asignaturas_model->get_asignaturas() != false > 0 ? $this->Asignaturas_model->get_asignaturas()->result() : ''))));
-			  
+*/			  
 	}
 
 	public function eliminar() {
